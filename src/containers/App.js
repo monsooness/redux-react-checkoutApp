@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
 import ItemDetails from '../components/ItemDetails';
 import PromoCode from '../components/PromoCode';
 
@@ -16,6 +15,9 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.order_info, 'name')
+    let data = this.props.order_info
+    console.log(this.props, 20)
     return (
       <div className="App">
         <div className="checkout_container">
@@ -29,24 +31,22 @@ class App extends Component {
           <h2>$108.03</h2>
         </div>
 
-          <div onClick={() => this.setState({item_detail_slide : !this.state.item_detail_slide})}>
-            {this.state.item_detail_slide ? <p>Hide item details</p> : <p>See item details</p>}
-            {this.state.item_detail_slide ? <ItemDetails /> : null}
-          </div>
-          <div onClick={() => this.setState({apply_promo_slide : !this.state.apply_promo_slide})}>
-            {this.state.apply_promo_slide ? <p>Hide promo code</p> : <p>Apply promo code</p>}
-            {this.state.apply_promo_slide ? <PromoCode /> : null}
-          </div>
+        <div onClick={() => this.setState({item_detail_slide : !this.state.item_detail_slide})}>
+          {this.state.item_detail_slide ? <p>Hide item details</p> : <p>See item details</p>}
+          {this.state.item_detail_slide ? <ItemDetails /> : null}
         </div>
+        <div onClick={() => this.setState({apply_promo_slide : !this.state.apply_promo_slide})}>
+          {this.state.apply_promo_slide ? <p>Hide promo code</p> : <p>Apply promo code</p>}
+          {this.state.apply_promo_slide ? <PromoCode /> : null}
+        </div>
+      </div>
     );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(App, dispatch) }
+const mapStateToProps = (state) => {
+  console.log(state, 48)
+  return { order_info: state }
 }
 
-function mapState
-
-
-export default connect(mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
