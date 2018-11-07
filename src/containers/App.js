@@ -15,9 +15,8 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.order_info, 'name')
     let data = this.props.order_info
-    console.log(this.props, 20)
+    console.log(data.checkoutReducer[0].org_price, 20)
     return (
       <div className="App">
         <div className="checkout_container">
@@ -33,12 +32,19 @@ class App extends Component {
 
         <div onClick={() => this.setState({item_detail_slide : !this.state.item_detail_slide})}>
           {this.state.item_detail_slide ? <p>Hide item details</p> : <p>See item details</p>}
-          {this.state.item_detail_slide ? <ItemDetails /> : null}
+          {this.state.item_detail_slide ? 
+            <ItemDetails 
+              desciption={data.checkoutReducer[0].name} 
+              image={data.checkoutReducer[0].image}
+              original_price={data.checkoutReducer[0].org_price}
+              current_price={data.checkoutReducer[0].current_price}
+              quantity={data.checkoutReducer[0].qty}
+              /> : null}
         </div>
         <div onClick={() => this.setState({apply_promo_slide : !this.state.apply_promo_slide})}>
           {this.state.apply_promo_slide ? <p>Hide promo code</p> : <p>Apply promo code</p>}
-          {this.state.apply_promo_slide ? <PromoCode /> : null}
         </div>
+          {this.state.apply_promo_slide ? <PromoCode /> : null}
       </div>
     );
   }

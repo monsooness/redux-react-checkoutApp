@@ -1,5 +1,5 @@
 .App {
-  width: 350px;
+  width: 330px;
   border: 1pt solid lightgrey;
   border-radius: .5em;
   padding: 3%;
@@ -30,4 +30,9 @@ h4 h2 {
 
 .tooltip-on-hover:hover + .tooltip { 
   display: inline-block; 
+}
+
+.split_in_half {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
