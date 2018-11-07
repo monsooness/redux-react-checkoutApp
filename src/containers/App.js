@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 import ItemDetails from '../components/ItemDetails';
 import PromoCode from '../components/PromoCode';
 
 import '../App.css'
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       item_detail_slide: false,
       apply_promo_slide: false,
@@ -40,4 +42,11 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(App, dispatch) }
+}
+
+function mapState
+
+
+export default connect(mapDispatchToProps)(App);
