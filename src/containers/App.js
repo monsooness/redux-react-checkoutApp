@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ItemDetails from '../components/ItemDetails';
 import PromoCode from '../components/PromoCode';
+import TriggersTooltips from '../components/TriggerTooltips';
 
 import '../App.css'
 
@@ -23,6 +24,7 @@ class App extends Component {
           <p>Subtotal</p>
           <h4>$102.96</h4>
           <p style={{ textDecoration: "underline" }}>Pickup Savings</p>
+          <TriggersTooltips />
           <h4 style={{ color: "red" }}>-$3.85</h4>
           <p>Est. taxes & fees <br /> (Based on 94085)</p>
           <h4>$8.92</h4>
@@ -31,7 +33,7 @@ class App extends Component {
         </div>
 
         <div onClick={() => this.setState({item_detail_slide : !this.state.item_detail_slide})}>
-          {this.state.item_detail_slide ? <p>Hide item details</p> : <p>See item details</p>}
+          {this.state.item_detail_slide ? <p style={{ textDecoration: "underline" }}>Hide item details</p> : <p style={{ textDecoration: "underline" }}>See item details</p>}
           {this.state.item_detail_slide ? 
             <ItemDetails 
               desciption={data.checkoutReducer[0].name} 
@@ -42,7 +44,7 @@ class App extends Component {
               /> : null}
         </div>
         <div onClick={() => this.setState({apply_promo_slide : !this.state.apply_promo_slide})}>
-          {this.state.apply_promo_slide ? <p>Hide promo code</p> : <p>Apply promo code</p>}
+          {this.state.apply_promo_slide ? <p style={{ textDecoration: "underline" }}>Hide promo code</p> : <p style={{ textDecoration: "underline" }}> Apply promo code</p>}
         </div>
           {this.state.apply_promo_slide ? <PromoCode /> : null}
       </div>
