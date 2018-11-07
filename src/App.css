@@ -11,10 +11,6 @@
   grid-template-columns: 70% 30%;
 }
 
-h4 h2 {
-  border: 1pt solid black 
-}
-
 .item_container {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -24,15 +20,39 @@ h4 h2 {
   text-decoration: underline;
 }
 
-.tooltip { 
-  display: none; 
-}
-
-.tooltip-on-hover:hover + .tooltip { 
-  display: inline-block; 
-}
-
 .split_in_half {
   display: grid;
   grid-template-columns: 50% 50%;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px ;
+  position: absolute;
+  z-index: 2;
+  bottom: -125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

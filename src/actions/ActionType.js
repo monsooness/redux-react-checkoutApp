@@ -1,2 +1,1 @@
-export const FETCH_DATA = 'FETCH_CALCULATED_DATA';
 export const APPLY_DISCOUNT = 'APPLY_DISCOUNT';

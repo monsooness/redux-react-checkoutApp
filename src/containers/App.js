@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ItemDetails from '../components/ItemDetails';
 import PromoCode from '../components/PromoCode';
-import TriggersTooltips from '../components/TriggerTooltips';
+import ToolTipComponent from '../components/Tooltip';
+import applyDiscount from '../actions/index';
+import { store } from '../index';
 
 import '../App.css'
 
@@ -12,19 +14,28 @@ class App extends Component {
     this.state = {
       item_detail_slide: false,
       apply_promo_slide: false,
+      discountCodeApplied: ''
     };
   }
 
+  handleDiscountCode = (code) => {
+    this.setState({discountCodeApplied: code})
+
+    if (this.state.discountCodeApplied === 'DISCOUNT') {
+      store.dispatch(applyDiscount)
+    }
+  }
+
   render() {
+    console.log(this.state.discountCodeApplied)
     let data = this.props.order_info
-    console.log(data.checkoutReducer[0].org_price, 20)
     return (
       <div className="App">
         <div className="checkout_container">
           <p>Subtotal</p>
           <h4>$102.96</h4>
-          <p style={{ textDecoration: "underline" }}>Pickup Savings</p>
-          <TriggersTooltips />
+          {/* <p style={{ textDecoration: "underline" }}></p> */}
+          <ToolTipComponent toolTipInfo={'Pickup Savings'} toolTipText={'Picking up the order in the store helps cut the cost, and we pass the savings to you'}/>
           <h4 style={{ color: "red" }}>-$3.85</h4>
           <p>Est. taxes & fees <br /> (Based on 94085)</p>
           <h4>$8.92</h4>
@@ -46,14 +57,13 @@ class App extends Component {
         <div onClick={() => this.setState({apply_promo_slide : !this.state.apply_promo_slide})}>
           {this.state.apply_promo_slide ? <p style={{ textDecoration: "underline" }}>Hide promo code</p> : <p style={{ textDecoration: "underline" }}> Apply promo code</p>}
         </div>
-          {this.state.apply_promo_slide ? <PromoCode /> : null}
+          {this.state.apply_promo_slide ? <PromoCode handleDiscountCode={this.handleDiscountCode}/> : null}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 48)
   return { order_info: state }
 }
 
