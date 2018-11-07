@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ItemDetails = () => (
-  <div>
+  <div className="item_container">
     <p>Images</p>
     <p>Description</p>
   </div>

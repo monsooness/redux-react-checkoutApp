@@ -21,9 +21,7 @@ class App extends Component {
           <h4>$102.96</h4>
           <p style={{ textDecoration: "underline" }}>Pickup Savings</p>
           <h4 style={{ color: "red" }}>-$3.85</h4>
-          <p>
-            Est. taxes & fees <br /> (Based on 94085)
-          </p>
+          <p>Est. taxes & fees <br /> (Based on 94085)</p>
           <h4>$8.92</h4>
           <h3>Est. total</h3>
           <h2>$108.03</h2>
