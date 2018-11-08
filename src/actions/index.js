@@ -1,5 +1,7 @@
 import * as actionType from './ActionType';
 
-export const applyDiscount = () => ({
+const applyDiscount = () => ({
   type: actionType.APPLY_DISCOUNT
 });
+
+export default applyDiscount;

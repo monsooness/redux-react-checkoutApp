@@ -4,7 +4,6 @@ import ItemDetails from '../components/ItemDetails';
 import PromoCode from '../components/PromoCode';
 import ToolTipComponent from '../components/Tooltip';
 import applyDiscount from '../actions/index';
-import { store } from '../index';
 
 import '../App.css'
 
@@ -22,25 +21,26 @@ class App extends Component {
     this.setState({discountCodeApplied: code})
 
     if (this.state.discountCodeApplied === 'DISCOUNT') {
-      store.dispatch(applyDiscount)
+      this.props.dispatch(applyDiscount())
+    } else {
+      alert('Not a valid Promo Code')
     }
   }
 
   render() {
-    console.log(this.state.discountCodeApplied)
     let data = this.props.order_info
+    console.log(data)
     return (
       <div className="App">
         <div className="checkout_container">
           <p>Subtotal</p>
-          <h4>$102.96</h4>
-          {/* <p style={{ textDecoration: "underline" }}></p> */}
+          <h4>${data.checkoutReducer[0].org_price}</h4>
           <ToolTipComponent toolTipInfo={'Pickup Savings'} toolTipText={'Picking up the order in the store helps cut the cost, and we pass the savings to you'}/>
-          <h4 style={{ color: "red" }}>-$3.85</h4>
+          <h4 style={{ color: "red" }}>${data.checkoutReducer[0].pickupSaving}</h4>
           <p>Est. taxes & fees <br /> (Based on 94085)</p>
-          <h4>$8.92</h4>
+          <h4>${data.checkoutReducer[0].tax_fees}</h4>
           <h3>Est. total</h3>
-          <h2>$108.03</h2>
+          <h2>${data.checkoutReducer[0].est_total}</h2>
         </div>
 
         <div onClick={() => this.setState({item_detail_slide : !this.state.item_detail_slide})}>

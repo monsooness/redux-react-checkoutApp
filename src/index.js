@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 import reducer from './reducer';
 import sampleData from './data/sampleData'
 
-const store = createStore(reducer, {checkoutReducer:sampleData});
+export const store = createStore(reducer, {checkoutReducer:sampleData});
 
 ReactDOM.render(
   <Provider store={store}>
