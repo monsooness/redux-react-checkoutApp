@@ -37,12 +37,13 @@
   border-radius: 6px;
   padding: 8px ;
   position: absolute;
-  z-index: 2;
-  bottom: -125%;
+  z-index: 1;
   left: 50%;
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
+  border: 1pt solid lightgray;
+  text-align:left;
 }
 
 .tooltip .tooltiptext::after {

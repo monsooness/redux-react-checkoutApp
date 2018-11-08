@@ -3,8 +3,8 @@ import React from 'react'
 const ColoredLine = ({ color }) => (
   <hr
     style={{
-      color: color,
-      backgroundColor: color,
+      color: 'black',
+      backgroundColor: 'black',
       height: 1
     }}
   />
