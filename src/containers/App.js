@@ -43,7 +43,15 @@ class App extends Component {
         </div>
 
         <div onClick={() => this.setState({item_detail_slide : !this.state.item_detail_slide})}>
-          {this.state.item_detail_slide ? <p style={{ textDecoration: "underline" }}>Hide item details -</p> : <p style={{ textDecoration: "underline" }}>See item details +</p>}
+          {this.state.item_detail_slide ? 
+            <div className={"split_in_half"}>
+              <p style={{ textDecoration: "underline" }}>Hide item details </p> 
+              <p> - </p> 
+            </div> : 
+            <div className={"split_in_half"}>
+              <p style={{ textDecoration: "underline" }}>See item details </p> 
+              <p>+</p>
+            </div>}
           {this.state.item_detail_slide ? 
             <ItemDetails 
               desciption={data.name} 
@@ -55,10 +63,18 @@ class App extends Component {
         </div>
         <ColoredLine color={'lightgrey'}/> 
         <div onClick={() => this.setState({apply_promo_slide : !this.state.apply_promo_slide})}>
-          {this.state.apply_promo_slide ? <p style={{ textDecoration: "underline" }}>Hide promo code - </p> : <p style={{ textDecoration: "underline" }}> Apply promo code +</p>}
-        </div>
+          {this.state.apply_promo_slide ? 
+          <div className={"split_in_half"}>
+            <p style={{ textDecoration: "underline" }}>Hide promo code </p>
+            <p> - </p>
+          </div> : 
+          <div className={"split_in_half"}>
+            <p style={{ textDecoration: "underline" }}> Apply promo code </p>
+            <p>+</p>
+        </div>}
           {this.state.apply_promo_slide ? <PromoCode handleDiscountCode={this.handleDiscountCode}/> : null}
       </div>
+    </div>
     );
   }
 }
