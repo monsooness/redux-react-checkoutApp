@@ -26,33 +26,34 @@ class App extends Component {
   }
 
   render() {
-    let data = this.props.order_info
+    let data = this.props.order_info.checkoutReducer[0]
     console.log(data)
     return (
       <div className="App">
         <div className="checkout_container">
           <p>Subtotal</p>
-          <h4>${data.checkoutReducer[0].org_price}</h4>
+          <h4 className="align_right">${data.org_price}</h4>
           <ToolTipComponent toolTipInfo={'Pickup Savings'} toolTipText={'Picking up the order in the store helps cut the cost, and we pass the savings to you'}/>
-          <h4 style={{ color: "red" }}>${data.checkoutReducer[0].pickupSaving}</h4>
+          <h4 className="align_right" style={{ color: "red" }}>${data.pickupSaving}</h4>
           <p>Est. taxes & fees <br /> (Based on 94085)</p>
-          <h4>${data.checkoutReducer[0].tax_fees}</h4>
-          <ColoredLine color={'black'}/> <ColoredLine />
-          <h3>Est. total</h3>
-          <h2>${data.checkoutReducer[0].est_total}</h2>
+          <h4 className="align_right">${data.tax_fees}</h4>
+          <ColoredLine color={'lightgrey'}/> <ColoredLine color={'black'}/>
+          <h2>Est. total</h2>
+          <h1 className="align_right">${data.est_total}</h1>
         </div>
 
         <div onClick={() => this.setState({item_detail_slide : !this.state.item_detail_slide})}>
           {this.state.item_detail_slide ? <p style={{ textDecoration: "underline" }}>Hide item details -</p> : <p style={{ textDecoration: "underline" }}>See item details +</p>}
           {this.state.item_detail_slide ? 
             <ItemDetails 
-              desciption={data.checkoutReducer[0].name} 
-              image={data.checkoutReducer[0].image}
-              original_price={data.checkoutReducer[0].org_price}
-              current_price={data.checkoutReducer[0].current_price}
-              quantity={data.checkoutReducer[0].qty}
+              desciption={data.name} 
+              image={data.image}
+              original_price={data.org_price}
+              current_price={data.current_price}
+              quantity={data.qty}
               /> : null}
         </div>
+        <ColoredLine color={'lightgrey'}/> 
         <div onClick={() => this.setState({apply_promo_slide : !this.state.apply_promo_slide})}>
           {this.state.apply_promo_slide ? <p style={{ textDecoration: "underline" }}>Hide promo code - </p> : <p style={{ textDecoration: "underline" }}> Apply promo code +</p>}
         </div>

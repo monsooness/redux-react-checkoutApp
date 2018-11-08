@@ -28,6 +28,7 @@
 .tooltip {
   position: relative;
   display: inline-block;
+  text-decoration: underline;
 }
 
 .tooltip .tooltiptext {
@@ -56,4 +57,9 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.align_right {
+  justify-self: right;
+  top: 20px;    
 }
