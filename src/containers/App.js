@@ -13,15 +13,17 @@ class App extends Component {
     super(props)
     this.state = {
       item_detail_slide: false,
-      apply_promo_slide: false
+      apply_promo_slide: false,
+      discountAdded: 0
     };
   }
 
   handleDiscountCode = (code) => {
-    if (code === 'DISCOUNT') {
+    if (code === 'DISCOUNT' && this.state.discountAdded<1) {
+      this.setState({discountAdded: this.state.discountAdded + 1})
       this.props.dispatch(applyDiscount())
     } else {
-      alert('Not a valid Promo Code')
+      alert('Not a valid Promo Code or a used code')
     }
   }
 
