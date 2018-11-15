@@ -72,8 +72,8 @@ class App extends Component {
             <p style={{ textDecoration: "underline" }}> Apply promo code </p>
             <p>+</p>
         </div>}
-          {this.state.apply_promo_slide ? <PromoCode handleDiscountCode={this.handleDiscountCode}/> : null}
       </div>
+        {this.state.apply_promo_slide ? <PromoCode handleDiscountCode={this.handleDiscountCode}/> : null}
     </div>
     );
   }
